@@ -3,6 +3,7 @@ from Sanmoku_Board import *
 from Sanmoku_Player import *
 from Sanmoku_Player_Random import *
 from Sanmoku_Player_RandomPlus import *
+from Sanmoku_Player_QL1 import *
 
 class Sanmoku_Agent :
 	
@@ -39,9 +40,9 @@ class Sanmoku_Agent :
 
 if __name__ == "__main__":
 	
-	p1 = Sanmoku_Player_RandomPlus()
+	p1 = Sanmoku_Player_QL1()
 	print('%s : %d' %(p1.name, p1.number))
-	p2 = Sanmoku_Player_RandomPlus()
+	p2 = Sanmoku_Player_QL1()
 	print('%s : %d' %(p2.name, p2.number))
 	
 	a = Sanmoku_Agent(p1, p2)

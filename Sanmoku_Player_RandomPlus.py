@@ -29,7 +29,7 @@ class Sanmoku_Player_RandomPlus(Sanmoku_Player) :
 		next = random.randrange(len(ava))
 		self.history.append([board.board.copy(), ava[next]])
 		return ava[next]
-	
+
 	def post_game(self, board:Sanmoku_Board) :
 		print('%s history %s' %(self.name, self.history))
 		
