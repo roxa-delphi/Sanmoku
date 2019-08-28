@@ -14,7 +14,7 @@ class Sanmoku_Agent :
 		self.nwin = [0, 0, 0, 0]
 		
 	
-	def game_start(self, nplay, disp=False) :
+	def game_start(self, nplay, disp=False, step=1) :
 		
 		for i in range(nplay) :
 			
@@ -26,13 +26,16 @@ class Sanmoku_Agent :
 				#print('ava=%s npos=%d' %(ava, ava[npos]))
 				self.board.set_board(pos, disp)
 		
-				if disp : self.board.display_board()
+				if disp :
+					if i % step == 0 :
+						self.board.display_board()
 				
 				player += 1
 				if player == 3 : player = 1
 		
 			self.nwin[self.board.status] += 1
-			print('Game=%d %s=%d %s=%d Draw=%d' %(i, self.player[1].name, self.nwin[1],self.player[2].name , self.nwin[2], self.nwin[3]))
+			if i % step == 0 :
+				print('Game=%d %s=%d %s=%d Draw=%d' %(i, self.player[1].name, self.nwin[1],self.player[2].name , self.nwin[2], self.nwin[3]))
 			
 			self.player[1].post_game(self.board)
 			self.player[2].post_game(self.board)
@@ -43,8 +46,18 @@ if __name__ == "__main__":
 	p1 = Sanmoku_Player_QL1()
 	print('%s : %d' %(p1.name, p1.number))
 	p2 = Sanmoku_Player_QL1()
+	#p2 = Sanmoku_Player_RandomPlus()
+	#p2 = Sanmoku_Player_Random()
 	print('%s : %d' %(p2.name, p2.number))
 	
 	a = Sanmoku_Agent(p1, p2)
-	a.game_start(1, True)
+	#a.game_start(2, True)
 	#a.game_start(1000, False)
+	a.game_start(100000, False, 100)
+
+	#print('p1 q = %s' %(p1.q))
+
+	p3 = Sanmoku_Player_RandomPlus()
+	b = Sanmoku_Agent(p1,p3)
+	b.game_start(5, True)
+

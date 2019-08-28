@@ -31,7 +31,7 @@ class Sanmoku_Player_RandomPlus(Sanmoku_Player) :
 		return ava[next]
 
 	def post_game(self, board:Sanmoku_Board) :
-		print('%s history %s' %(self.name, self.history))
+		#print('%s history %s' %(self.name, self.history))
 		
 		self.history = []
 	
