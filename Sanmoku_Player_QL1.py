@@ -4,7 +4,7 @@ from Sanmoku_Board import *
 
 class Sanmoku_Player_QL1(Sanmoku_Player) :
 	
-	def __init__(self, name='', e=0.2, alpha=0.01) :
+	def __init__(self, name='', e=0.2, alpha=0.03) :
 		if name == '' :
 			self.name = 'QL1_' + str(Sanmoku_Player.num)
 		else :
@@ -91,7 +91,7 @@ class Sanmoku_Player_QL1(Sanmoku_Player) :
 			pq = self.getQ(tuple(ob), s)
 
 			#sarsa
-			self.q[(tuple(ob), s)] = pq + self.alpha * (r + 0.9 * prevpq - pq)
+			self.q[(tuple(ob), s)] = pq + self.alpha * (r + self.gamma * prevpq - pq)
 
 			prevpq = pq
 			

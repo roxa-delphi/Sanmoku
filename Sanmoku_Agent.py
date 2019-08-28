@@ -53,11 +53,12 @@ if __name__ == "__main__":
 	a = Sanmoku_Agent(p1, p2)
 	#a.game_start(2, True)
 	#a.game_start(1000, False)
-	a.game_start(100000, False, 100)
+	a.game_start(100000, False, 1000)
 
 	#print('p1 q = %s' %(p1.q))
 
+	p1.e = 0
 	p3 = Sanmoku_Player_RandomPlus()
 	b = Sanmoku_Agent(p1,p3)
-	b.game_start(5, True)
+	b.game_start(10, True)
 
